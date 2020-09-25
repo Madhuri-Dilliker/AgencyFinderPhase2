@@ -25,32 +25,32 @@ View(Transportation_policy)
 
 ```
 
-#
+#If in column 'Services Provided in Other Languages' the row contains Bilingual staff on-site or Spanish interperters or Spanish or yes or Yes  then add yes in new column Services Provided in Other Lang Yes/No for that row, else add no if Services Provided in Other Languages contains NA or no or No or N/A
 
 ```{r}
 Transportation_policy$`Services Provided in Other Lang Yes/No` <- ifelse(grepl("Bilingual staff on-site|Spanish interperters|Spanish|yes|Yes", Transportation_policy$`Services Provided in Other Languages`), "yes",ifelse(grepl("NA|no|No|N/A", Transportation_policy$`Services Provided in Other Languages`), "no", "")  )
 ```
 
-
-
+#viewing the dataframe
 
 ```{r}
 View(Transportation_policy)
 
 ```
 
+#If 'Transportation Policy' column contain Yes or yes or Only for field trips or Must have bus fair card or pay once you reach the bus or IHAP is not able to transport clients, but will assist clients with accessing transportation resources such as Medicaid, Orange Card, or Senior Resources transportation then add yes to new column 'Transportation Policy Yes/No' for that row, else add no in the row if 'Transportation Policy'columnn contain NA or No or None or N/A
+
 ```{r}
 Transportation_policy$`Transportation Policy Yes/No`<- ifelse(grepl("Yes|yes|Only for field trips|Must have bus fair card or pay once you reach the bus|IHAP is not able to transport clients, but will assist clients with accessing transportation resources such as Medicaid, Orange Card, or Senior Resources transportation.", Transportation_policy$`Transportation Policy`), "yes",ifelse(grepl("NA|No|None|N/A", Transportation_policy$`Transportation Policy`), "no", "")  )
 ```
 
 
-```{r}
-library("writexl")
-```
 
-#Extracting Master_Program_List dataframe 
+#Extracting finalTransportationpolicy.csv
 
 ```{r}
-write_xlsx(Transportation_policy,"C:/Users/madhu/OneDrive/Documents/Ready for school, ready for life/AgencyListDedupe/Transportation_policyx`.xlsx")
+
+write.csv(Transportation_policy,"Data/finalTransportationpolicy.csv",row.names = FALSE)
+
 ```
 
