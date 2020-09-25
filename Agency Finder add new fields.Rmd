@@ -2,24 +2,22 @@
 title: "Agency Finder Enhancements-Phase 2"
 output: html_notebook
 ---
-
+#Read the transportation policy data
 
 ```{r}
 
-Transportation_policy<-read_excel("C:/Users/madhu/OneDrive/Documents/Ready for school, ready for life/Agency Finder/Transportation Policy with Program ID.xls.xlsx")
-
+Transportation_policy <-read_csv("Data/Transportation_policy.csv")
 
 ```
 
-
-
-
+#Creating the subset of transportation policy dataframe
 
 ```{r}
 Transportation_policy <- subset(Transportation_policy, select = c(`Program: Program Name`, `Program: ID`,`Evidence Based`,`Services Provided in Other Languages`,`Services Provided in Other Lang Yes/No`,`Transportation Policy`)) 
 
 ```
 
+#viewing the dataframe
 
 ```{r}
 View(Transportation_policy) 
@@ -27,8 +25,7 @@ View(Transportation_policy)
 
 ```
 
-
-
+#
 
 ```{r}
 Transportation_policy$`Services Provided in Other Lang Yes/No` <- ifelse(grepl("Bilingual staff on-site|Spanish interperters|Spanish|yes|Yes", Transportation_policy$`Services Provided in Other Languages`), "yes",ifelse(grepl("NA|no|No|N/A", Transportation_policy$`Services Provided in Other Languages`), "no", "")  )
