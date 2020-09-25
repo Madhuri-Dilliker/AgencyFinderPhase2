@@ -10,7 +10,7 @@ Transportation_policy <-read_csv("Data/Transportation_policy.csv")
 
 ```
 
-#Creating the subset of transportation policy dataframe
+#Creating the subset of transportation policy dataframe 
 
 ```{r}
 Transportation_policy <- subset(Transportation_policy, select = c(`Program: Program Name`, `Program: ID`,`Evidence Based`,`Services Provided in Other Languages`,`Services Provided in Other Lang Yes/No`,`Transportation Policy`)) 
